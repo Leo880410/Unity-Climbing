@@ -24,7 +24,7 @@ public class CubeDestory : MonoBehaviour {
     }
     void DestoryAndCreat()
     {
-        CreatManager.CreatNewCube();
         Destroy(gameObject);
+        CreatManager.CreatNewCube();
     }
 }

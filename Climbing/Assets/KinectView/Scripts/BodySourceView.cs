@@ -114,18 +114,22 @@ public class BodySourceView : MonoBehaviour
         for (Kinect.JointType jt = Kinect.JointType.SpineBase; jt <= Kinect.JointType.ThumbRight; jt++)
         {
             GameObject jointObj = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            //加入script
-            jointObj.AddComponent<CubeDestory>();
-            //加入tag 以便判斷是誰觸碰的
-            jointObj.tag = jt.ToString();
             LineRenderer lr = jointObj.AddComponent<LineRenderer>();
             lr.SetVertexCount(2);
             lr.material = BoneMaterial;
-            lr.SetWidth(0.05f, 0.05f);
+            lr.SetWidth(0.5f, 0.5f);
             
-            jointObj.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+            jointObj.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             jointObj.name = jt.ToString();
             jointObj.transform.parent = body.transform;
+            //加入tag 以便判斷是誰觸碰的
+            if (jt == Kinect.JointType.HandLeft || jt == Kinect.JointType.HandRight)
+            {
+                jointObj.tag = jt.ToString();
+                Rigidbody rigidbody = jointObj.AddComponent<Rigidbody>();
+                rigidbody.useGravity = false;
+            }
+
         }
         
         return body;
@@ -177,6 +181,6 @@ public class BodySourceView : MonoBehaviour
     
     private static Vector3 GetVector3FromJoint(Kinect.Joint joint)
     {
-        return new Vector3(joint.Position.X * 10, joint.Position.Y * 10, joint.Position.Z * 10);
+        return new Vector3(joint.Position.X * 30, joint.Position.Y * 30, joint.Position.Z);
     }
 }

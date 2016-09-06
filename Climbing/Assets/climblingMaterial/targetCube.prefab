@@ -13,7 +13,7 @@ GameObject:
   - 65: {fileID: 6581652}
   - 33: {fileID: 3322806}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: targetCube
   m_TagString: Cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 175000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.4, y: -0.100000024, z: -0.13}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -88,10 +88,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 175000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bad1005b1c6333145aee8e2ed6874de4, type: 3}
+  m_Script: {fileID: 11500000, guid: 3639c05ab1b197941aa7dfb3bae489f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CreatManagerObject: {fileID: 100592, guid: 1cc9368acb657914abcda65bf6d57e45, type: 2}
+  CreatManagerObject: {fileID: 100592, guid: 8163c6a1dbd41214b8725f102201e5d5, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
