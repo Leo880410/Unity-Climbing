@@ -10,7 +10,7 @@ public class CubeCreate : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         _CreatPosition = new Vector3();
-        _CreatPosition.z = 2f;
+        _CreatPosition.z = 20f;
         CreatNewCube();
 	}
 	
@@ -22,7 +22,7 @@ public class CubeCreate : MonoBehaviour {
     {
         _CreatPosition.x = Random.Range(-50f, 10f);
         _CreatPosition.y = Random.Range(-10f, 30f);
-        _CreatPosition.z = 2f;
+        _CreatPosition.z = 20f;
         Instantiate(_ObjCreat, _CreatPosition, Quaternion.identity);
         //Debug.Log("X = " + _CreatPosition.x + "Y = " + _CreatPosition.y);
     }
