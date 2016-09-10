@@ -7,6 +7,19 @@ public class CubeCreate : MonoBehaviour {
     private Vector3 _CreatPosition;
     private GameObject _ObjClone;
     public static CubeCreate _instance = null;
+
+    void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
 	// Use this for initialization
 	void Start () {
         _CreatPosition = new Vector3();

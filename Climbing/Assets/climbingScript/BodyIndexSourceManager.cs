@@ -89,6 +89,8 @@ public class BodyIndexSourceManager : MonoBehaviour {
                 }
             }
     }
+
+    //初始化
     void initialization()
     {
         kinectSensor = KinectSensor.GetDefault();

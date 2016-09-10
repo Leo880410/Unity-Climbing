@@ -7,7 +7,8 @@ public class BodySourceView : MonoBehaviour
 {
     public Material BoneMaterial;
     public GameObject BodySourceManager;
-    
+    public float scaleBodyJoint = 30;
+
     private Dictionary<ulong, GameObject> _Bodies = new Dictionary<ulong, GameObject>();
     private BodySourceManager _BodyManager;
     
@@ -179,8 +180,8 @@ public class BodySourceView : MonoBehaviour
         }
     }
     
-    private static Vector3 GetVector3FromJoint(Kinect.Joint joint)
+    private  Vector3 GetVector3FromJoint(Kinect.Joint joint)
     {
-        return new Vector3(joint.Position.X * -30, joint.Position.Y * 30, 20);
+        return new Vector3(joint.Position.X * -scaleBodyJoint, joint.Position.Y * scaleBodyJoint, 20);
     }
 }
