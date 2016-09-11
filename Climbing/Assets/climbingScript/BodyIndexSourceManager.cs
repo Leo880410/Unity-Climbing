@@ -28,16 +28,9 @@ public class BodyIndexSourceManager : MonoBehaviour {
     /// </summary>
     private BodyIndexFrameReader bodyIndexFrameReader = null;
 
-    /// <summary>
-    /// Description of the data contained in the body index frame
-    /// </summary>
-    private FrameDescription bodyIndexFrameDescription = null;
-
     private int BodyFrameWidth;
-    private int BodyFrameHeigh;
     private Texture2D _Texture;
     private byte[] _Data;
-    private int frameCount = 0;
 
     public Texture2D GetBodyIndexTexture()
     {
@@ -78,7 +71,7 @@ public class BodyIndexSourceManager : MonoBehaviour {
                     {
                         _Texture.SetPixel(i % BodyFrameWidth, i / BodyFrameWidth, BodyColor[_Data[i]]);
                     }
-                    catch (Exception e)
+                    catch
                     {
                         break;
                     }
@@ -101,7 +94,6 @@ public class BodyIndexSourceManager : MonoBehaviour {
 
             var frameDesc = kinectSensor.BodyIndexFrameSource.FrameDescription;
             BodyFrameWidth = frameDesc.Width;
-            BodyFrameHeigh = frameDesc.Height;
             //Debug.Log("BodyFrameWidth = " + BodyFrameWidth + " BodyFrameHeigh = " + BodyFrameHeigh);
             //Debug.Log("frameDesc.BytesPerPixel = " + frameDesc.BytesPerPixel + " frameDesc.LengthInPixels = " + frameDesc.LengthInPixels);
             _Texture = new Texture2D(frameDesc.Width, frameDesc.Height, TextureFormat.RGBA32, false);

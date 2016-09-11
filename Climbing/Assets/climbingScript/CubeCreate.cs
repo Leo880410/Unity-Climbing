@@ -5,7 +5,6 @@ public class CubeCreate : MonoBehaviour {
 
     public GameObject _ObjCreat;
     private Vector3 _CreatPosition;
-    private GameObject _ObjClone;
     public static CubeCreate _instance = null;
 
     void Awake()
