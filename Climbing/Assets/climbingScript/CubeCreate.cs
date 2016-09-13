@@ -6,7 +6,7 @@ public class CubeCreate : MonoBehaviour {
     public GameObject _ObjCreat;
     private Vector3 _CreatPosition;
     public static CubeCreate _instance = null;
-
+    /*
     void Awake()
     {
         if (_instance == null)
@@ -18,7 +18,7 @@ public class CubeCreate : MonoBehaviour {
             Destroy(gameObject);
         }
     }
-
+    */
 	// Use this for initialization
 	void Start () {
         _CreatPosition = new Vector3();

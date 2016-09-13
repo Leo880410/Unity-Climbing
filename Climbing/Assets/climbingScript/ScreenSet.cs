@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class ScreenSet : MonoBehaviour {
 
@@ -10,7 +11,8 @@ public class ScreenSet : MonoBehaviour {
 	void Start () {
         _screenWidth = Screen.width;
         _screenHeight = Screen.height;
-        Debug.Log("screenwidth = " + _screenWidth + " screenH = " + _screenHeight);
+        //Debug.Log("screenwidth = " + _screenWidth + " screenH = " + _screenHeight);
+        Console.WriteLine(_screenWidth);
 	}
 	
 	// Update is called once per frame

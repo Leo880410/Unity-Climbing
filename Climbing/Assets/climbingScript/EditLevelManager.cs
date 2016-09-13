@@ -37,7 +37,7 @@ public class EditLevelManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+        Debug.Log("Screen w =" + Screen.width + " Screen h = " + Screen.height);
         initialization();
 	}
 	

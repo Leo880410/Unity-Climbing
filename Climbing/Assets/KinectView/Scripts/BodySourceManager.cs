@@ -21,7 +21,7 @@ public class BodySourceManager : MonoBehaviour
         if (_Sensor != null)
         {
             _Reader = _Sensor.BodyFrameSource.OpenReader();
-            
+
             if (!_Sensor.IsOpen)
             {
                 _Sensor.Open();

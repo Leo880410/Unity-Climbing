@@ -24,7 +24,6 @@ public class ColorSourceManager : MonoBehaviour
         if (_Sensor != null) 
         {
             _Reader = _Sensor.ColorFrameSource.OpenReader();
-            
             var frameDesc = _Sensor.ColorFrameSource.CreateFrameDescription(ColorImageFormat.Rgba);
             ColorWidth = frameDesc.Width;
             ColorHeight = frameDesc.Height;
