@@ -132,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BoneMaterial: {fileID: 2100000, guid: f2ea145c63353784985576f08398a815, type: 2}
   BodySourceManager: {fileID: 1698423884}
-  scaleBodyJoint: 30
+  _targetDepth: 0
 --- !u!1 &252019523
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,8 +392,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 323345950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 49}
-  m_LocalScale: {x: -157.86938, y: 159.29996, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 98}
+  m_LocalScale: {x: -160, y: 90, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -591,15 +591,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000010459330584, guid: 1604cf2f909af564bb0ec6249f59a894, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -47.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000010459330584, guid: 1604cf2f909af564bb0ec6249f59a894, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -59.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000010459330584, guid: 1604cf2f909af564bb0ec6249f59a894, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 50
+      value: 99
       objectReference: {fileID: 0}
     - target: {fileID: 4000010459330584, guid: 1604cf2f909af564bb0ec6249f59a894, type: 2}
       propertyPath: m_LocalRotation.x
@@ -628,11 +628,11 @@ Prefab:
       objectReference: {fileID: 679549941}
     - target: {fileID: 4000010459330584, guid: 1604cf2f909af564bb0ec6249f59a894, type: 2}
       propertyPath: m_LocalScale.x
-      value: 60
+      value: -160
       objectReference: {fileID: 0}
     - target: {fileID: 4000010459330584, guid: 1604cf2f909af564bb0ec6249f59a894, type: 2}
       propertyPath: m_LocalScale.y
-      value: 40
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1604cf2f909af564bb0ec6249f59a894, type: 2}
@@ -955,7 +955,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 50
+  far clip plane: 100
   field of view: 60
   orthographic: 1
   orthographic size: 80

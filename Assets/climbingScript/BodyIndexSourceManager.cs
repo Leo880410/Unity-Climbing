@@ -12,7 +12,7 @@ public class BodyIndexSourceManager : MonoBehaviour {
     private static readonly Color[] BodyColor =
         {
             Color.red,
-            Color.green,
+            Color.grey,
             Color.blue,
             Color.yellow,
             Color.white,
@@ -27,10 +27,13 @@ public class BodyIndexSourceManager : MonoBehaviour {
     /// Reader for body index frames
     /// </summary>
     private BodyIndexFrameReader bodyIndexFrameReader = null;
+    private DepthFrameReader depthFrameReader = null;
 
     private int BodyFrameWidth;
     private Texture2D _Texture;
     private byte[] _Data;
+    private CoordinateMapper _Mapper;
+
 
     public Texture2D GetBodyIndexTexture()
     {
@@ -52,10 +55,6 @@ public class BodyIndexSourceManager : MonoBehaviour {
                 frame.CopyFrameDataToArray(_Data);
                 setTextureByData();
                 _Texture.Apply();
-                /*
-                _Texture.LoadRawTextureData(_Data);
-                _Texture.Apply();
-                */
                 frame.Dispose();
                 frame = null;
             }
@@ -91,14 +90,15 @@ public class BodyIndexSourceManager : MonoBehaviour {
         if (kinectSensor != null)
         {
             bodyIndexFrameReader = kinectSensor.BodyIndexFrameSource.OpenReader();
-
+            depthFrameReader = kinectSensor.DepthFrameSource.OpenReader();
             var frameDesc = kinectSensor.BodyIndexFrameSource.FrameDescription;
             BodyFrameWidth = frameDesc.Width;
-            //Debug.Log("BodyFrameWidth = " + BodyFrameWidth + " BodyFrameHeigh = " + BodyFrameHeigh);
             //Debug.Log("frameDesc.BytesPerPixel = " + frameDesc.BytesPerPixel + " frameDesc.LengthInPixels = " + frameDesc.LengthInPixels);
+            //Debug.Log("frameDesc.Width = " + frameDesc.Width + " frameDesc.Height = " + frameDesc.Height);
+
+            //frameDesc.Width = 512 , frameDesc.Height = 424
             _Texture = new Texture2D(frameDesc.Width, frameDesc.Height, TextureFormat.RGBA32, false);
             _Data = new byte[frameDesc.BytesPerPixel * frameDesc.LengthInPixels];
-            //Debug.Log("_Texture w = " + _Texture.width + " _Texture h = " + _Texture.height);
             if (!kinectSensor.IsOpen)
             {
                 kinectSensor.Open();

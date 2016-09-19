@@ -2,16 +2,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using Kinect = Windows.Kinect;
+using Windows.Kinect;
 
 public class BodySourceView : MonoBehaviour 
 {
     public Material BoneMaterial;
     public GameObject BodySourceManager;
-    public float scaleBodyJoint = 30;
+    public float _targetDepth;
 
+    private KinectSensor _Sensor;
+    private CoordinateMapper _Mapper;
     private Dictionary<ulong, GameObject> _Bodies = new Dictionary<ulong, GameObject>();
     private BodySourceManager _BodyManager;
-    
+    private const float _frameWidth = 160f;
+    private const float _frameHeiht = 80f;
+    private const float _ScreenWidth = 1920f;
+    private const float _ScreenHeigh = 1080f;
+
+
     private Dictionary<Kinect.JointType, Kinect.JointType> _BoneMap = new Dictionary<Kinect.JointType, Kinect.JointType>()
     {
         { Kinect.JointType.FootLeft, Kinect.JointType.AnkleLeft },
@@ -43,7 +51,15 @@ public class BodySourceView : MonoBehaviour
         { Kinect.JointType.SpineShoulder, Kinect.JointType.Neck },
         { Kinect.JointType.Neck, Kinect.JointType.Head },
     };
-    
+
+    void Start()
+    {
+        _targetDepth = 20f;
+        _Sensor = KinectSensor.GetDefault();
+        if (_Sensor != null)
+            _Mapper = _Sensor.CoordinateMapper;
+    }
+
     void Update () 
     {
         if (BodySourceManager == null)
@@ -118,9 +134,9 @@ public class BodySourceView : MonoBehaviour
             LineRenderer lr = jointObj.AddComponent<LineRenderer>();
             lr.SetVertexCount(2);
             lr.material = BoneMaterial;
-            lr.SetWidth(0.5f, 0.5f);
+            lr.SetWidth(2f, 2f);
             
-            jointObj.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            jointObj.transform.localScale = new Vector3(1f, 1f, 1f);
             jointObj.name = jt.ToString();
             jointObj.transform.parent = body.transform;
             //加入tag 以便判斷是誰觸碰的
@@ -182,6 +198,13 @@ public class BodySourceView : MonoBehaviour
     
     private  Vector3 GetVector3FromJoint(Kinect.Joint joint)
     {
-        return new Vector3(joint.Position.X * -scaleBodyJoint, joint.Position.Y * scaleBodyJoint, 20);
+        ColorSpacePoint colorPoint = _Mapper.MapCameraPointToColorSpace(joint.Position);
+
+        //colorSpace座標轉化為螢幕座標
+        colorPoint.X = (int)((colorPoint.X * _frameWidth) / _ScreenWidth);
+        colorPoint.Y = (int)((colorPoint.Y * _frameHeiht) / _ScreenHeigh);
+
+        //回傳修正後的座標
+        return new Vector3(-colorPoint.X + (_frameWidth / 2), -colorPoint.Y + (_frameHeiht / 2), _targetDepth);
     }
 }
