@@ -14,10 +14,10 @@ public class BodySourceView : MonoBehaviour
     private CoordinateMapper _Mapper;
     private Dictionary<ulong, GameObject> _Bodies = new Dictionary<ulong, GameObject>();
     private BodySourceManager _BodyManager;
-    private const float _frameWidth = 160f;
-    private const float _frameHeiht = 80f;
-    private const float _ScreenWidth = 1920f;
-    private const float _ScreenHeigh = 1080f;
+    private const float FRAMEWIDTH = 160f;
+    private const float FRAMEHEIGH = 90f;
+    private const float SCREENWIDTH = 1920f;
+    private const float SCREENHEIGH = 1080f;
 
 
     private Dictionary<Kinect.JointType, Kinect.JointType> _BoneMap = new Dictionary<Kinect.JointType, Kinect.JointType>()
@@ -201,10 +201,10 @@ public class BodySourceView : MonoBehaviour
         ColorSpacePoint colorPoint = _Mapper.MapCameraPointToColorSpace(joint.Position);
 
         //colorSpace座標轉化為螢幕座標
-        colorPoint.X = (int)((colorPoint.X * _frameWidth) / _ScreenWidth);
-        colorPoint.Y = (int)((colorPoint.Y * _frameHeiht) / _ScreenHeigh);
+        colorPoint.X = (int)((colorPoint.X * FRAMEWIDTH) / SCREENWIDTH);
+        colorPoint.Y = (int)((colorPoint.Y * FRAMEHEIGH) / SCREENHEIGH);
 
         //回傳修正後的座標
-        return new Vector3(-colorPoint.X + (_frameWidth / 2), -colorPoint.Y + (_frameHeiht / 2), _targetDepth);
+        return new Vector3(-colorPoint.X + (FRAMEWIDTH / 2.0f), -colorPoint.Y + (FRAMEHEIGH / 2.0f), _targetDepth);
     }
 }

@@ -27,13 +27,10 @@ public class BodyIndexSourceManager : MonoBehaviour {
     /// Reader for body index frames
     /// </summary>
     private BodyIndexFrameReader bodyIndexFrameReader = null;
-    private DepthFrameReader depthFrameReader = null;
 
     private int BodyFrameWidth;
     private Texture2D _Texture;
     private byte[] _Data;
-    private CoordinateMapper _Mapper;
-
 
     public Texture2D GetBodyIndexTexture()
     {
@@ -90,7 +87,7 @@ public class BodyIndexSourceManager : MonoBehaviour {
         if (kinectSensor != null)
         {
             bodyIndexFrameReader = kinectSensor.BodyIndexFrameSource.OpenReader();
-            depthFrameReader = kinectSensor.DepthFrameSource.OpenReader();
+
             var frameDesc = kinectSensor.BodyIndexFrameSource.FrameDescription;
             BodyFrameWidth = frameDesc.Width;
             //Debug.Log("frameDesc.BytesPerPixel = " + frameDesc.BytesPerPixel + " frameDesc.LengthInPixels = " + frameDesc.LengthInPixels);
